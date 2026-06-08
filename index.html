@@ -183,12 +183,12 @@
     display:flex;max-width:760px;margin:0 auto;padding:8px 16px;gap:8px;
   }
   .tabbtn{
-    flex:1;padding:11px 8px;border-radius:12px;cursor:pointer;
-    font-family:inherit;font-size:15.5px;font-weight:800;color:#5a7378;
+    flex:1;padding:11px 4px;border-radius:12px;cursor:pointer;
+    font-family:inherit;font-size:14.5px;font-weight:800;color:#5a7378;
     background:#fff;border:2px solid var(--line);transition:all .18s;
-    display:flex;align-items:center;justify-content:center;gap:7px;
+    display:flex;align-items:center;justify-content:center;gap:5px;
   }
-  .tabbtn svg{width:19px;height:19px;fill:currentColor;}
+  .tabbtn svg{width:17px;height:17px;fill:currentColor;flex:0 0 auto;}
   .tabbtn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
   .tab-page{display:none;}
   .tab-page.active{display:block;}
@@ -279,6 +279,25 @@
   .flow .ftext span{font-size:14.5px;color:#6b8388;}
 
   .mini-actions{display:flex;gap:9px;margin-top:6px;}
+
+  /* FAQ accordion */
+  .faq{background:#fff;border-radius:13px;box-shadow:var(--shadow);margin-bottom:11px;overflow:hidden;}
+  .faq summary{
+    list-style:none;cursor:pointer;padding:15px 17px;font-size:16px;font-weight:800;
+    color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:10px;
+  }
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .q{flex:1;}
+  .faq summary .arr{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--cloud);
+    display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+  .faq summary .arr svg{width:13px;height:13px;fill:var(--teal-d);}
+  .faq[open] summary .arr{transform:rotate(180deg);background:var(--teal);}
+  .faq[open] summary .arr svg{fill:#fff;}
+  .faq .ans{padding:0 17px 16px;font-size:15px;color:#48626a;line-height:1.7;}
+  .faq .ans strong{color:var(--teal-d);}
+
+  .tip{background:#FFF8EE;border:1.5px solid #f3d9a8;border-radius:13px;padding:14px 16px;margin-bottom:14px;font-size:15px;color:#7a5a28;}
+  .tip b{color:#c47d12;}
 </style>
 </head>
 <body>
@@ -286,11 +305,15 @@
 <nav class="tabbar">
   <button class="tabbtn active" data-tab="resources">
     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-    資源轉介
+    資源
   </button>
   <button class="tabbtn" data-tab="selfhelp">
     <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
     自我幫助
+  </button>
+  <button class="tabbtn" data-tab="rent">
+    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    租屋協助
   </button>
 </nav>
 
@@ -774,6 +797,194 @@
 </main>
 
 </div><!-- /tab-selfhelp -->
+
+<!-- ============ RENT TAB ============ -->
+<div class="tab-page" id="tab-rent">
+
+<header class="help-header" style="background:linear-gradient(150deg,var(--ink) 0%,var(--teal-d) 100%);">
+  <span class="badge" style="background:var(--orange);color:#fff;">租屋協助</span>
+  <h1>在社區租房子，這樣準備就安心</h1>
+  <p>想自己在社區租屋住下來嗎？這裡帶你看：找誰幫忙、有什麼補助、怎麼申請、要注意什麼，一步一步來。</p>
+</header>
+
+<main>
+
+  <div class="help-intro" style="border-left-color:var(--orange);">
+    租屋是「自立生活」很重要的一步。租屋與社區居住由<strong>專業承辦單位</strong>提供服務，<strong>愛迪樂協助你轉介、陪你接上資源</strong>。先了解流程，再開始行動。
+  </div>
+
+  <!-- 找誰協助 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">1</span><h3>找誰協助你租屋？</h3></div>
+    <p>租屋與社區居住，是由<strong>專業承辦單位</strong>提供服務。愛迪樂的角色是<strong>協助你轉介、陪伴你</strong>，幫你接上下面這些單位：</p>
+    <div class="tip" style="margin-top:4px;">💡 下面的承辦單位可<b>直接撥打電話</b>洽詢。如果聯絡上有困難或有任何問題，再找<b>愛迪樂團隊或會所工作人員</b>協助。</div>
+  </div>
+
+  <!-- 承辦租屋／社區居住的單位 -->
+  <div class="block-h" style="margin:4px 0 11px;"><span class="bnum" style="background:var(--amber);color:var(--ink);">★</span><h3>承辦「社區居住／租屋協助」的單位</h3></div>
+  <p style="font-size:14px;color:#7c9296;margin:-4px 4px 12px;">桃園市精神病病人社區居住服務方案委辦單位，協助非機構式社區居住、租屋協助與自立生活支持。</p>
+
+  <div class="card" data-cat="live">
+    <div class="card-top"><div class="card-name">齡活居家長照機構</div><span class="card-tag tag-amber">社區居住</span></div>
+    <div class="card-help">承接社區居住服務方案，提供非機構式社區居住、外展到宅服務、租屋協助與自立生活訓練。</div>
+    <div class="card-meta"><span class="label">電話</span>03-2727-729　<span class="label">地址</span>桃園市龜山區萬壽路二段1258號</div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:032727729"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+      <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=%E9%BD%A1%E6%B4%BB%E5%B1%85%E5%AE%B6%E9%95%B7%E7%85%A7%E6%A9%9F%E6%A7%8B%20%E6%A1%83%E5%9C%92%E5%B8%82%E9%BE%9C%E5%B1%B1%E5%8D%80%E8%90%AC%E5%A3%BD%E8%B7%AF%E4%BA%8C%E6%AE%B51258%E8%99%9F"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+    </div>
+  </div>
+
+  <div class="card" data-cat="live">
+    <div class="card-top"><div class="card-name">如苑精神護理之家</div><span class="card-tag tag-amber">社區居住</span></div>
+    <div class="card-help">承接社區居住方案，協助生活自理訓練、復能與用藥指導、社區適應與租屋協助。</div>
+    <div class="card-meta"><span class="label">電話</span>03-335-2662</div>
+    <div class="actions">
+      <a class="btn btn-call full" href="tel:0333352662"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+    </div>
+  </div>
+
+  <div class="card" data-cat="live">
+    <div class="card-top"><div class="card-name">蓮安康復之家</div><span class="card-tag tag-amber">社區居住</span></div>
+    <div class="card-help">楊梅區社區居住服務，提供非機構式居住支持、自立生活能力評估與租屋協助。</div>
+    <div class="card-meta"><span class="label">電話</span>03-478-2000　<span class="label">地址</span>桃園市楊梅區新農街6號3樓</div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:0344782000"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+      <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=%E8%93%AE%E5%AE%89%E5%BA%B7%E5%BE%A9%E4%B9%8B%E5%AE%B6%20%E6%A1%83%E5%9C%92%E5%B8%82%E6%A5%8A%E6%A2%85%E5%8D%80%E6%96%B0%E8%BE%B2%E8%A1%976%E8%99%9F"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+    </div>
+  </div>
+
+  <!-- 租金補貼／福利的官方窗口 -->
+  <div class="block-h" style="margin:18px 0 11px;"><span class="bnum" style="background:var(--teal);">＄</span><h3>租金補貼與福利的官方窗口</h3></div>
+
+  <div class="card" data-cat="welfare">
+    <div class="card-top"><div class="card-name">內政部 300億租金補貼</div><span class="card-tag tag-teal">補貼</span></div>
+    <div class="card-help">中央擴大租金補貼線上申請平台，租金補貼的正式受理窗口。</div>
+    <div class="actions">
+      <a class="btn btn-map full" target="_blank" href="https://has.cpami.gov.tw/"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>前往線上申請平台</a>
+    </div>
+  </div>
+
+  <div class="card" data-cat="welfare">
+    <div class="card-top"><div class="card-name">桃園市政府 住宅發展處</div><span class="card-tag tag-teal">補貼</span></div>
+    <div class="card-help">桃園市租金補貼在地受理與諮詢窗口，可詢問申請細節與進度。</div>
+    <div class="actions">
+      <a class="btn btn-map full" target="_blank" href="https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E5%B8%82%E6%94%BF%E5%BA%9C%E4%BD%8F%E5%AE%85%E7%99%BC%E5%B1%95%E8%99%95"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>查詢住宅發展處</a>
+    </div>
+  </div>
+
+  <div class="card" data-cat="welfare">
+    <div class="card-top"><div class="card-name">身心障礙者服務中心</div><span class="card-tag tag-teal">福利</span></div>
+    <div class="card-help">福利身分諮詢、資源連結，協助辦理身障證明、補助等。</div>
+    <div class="actions">
+      <a class="btn btn-map full" target="_blank" href="https://www.google.com/maps/search/?api=1&query=%E6%A1%83%E5%9C%92%E5%B8%82%E8%BA%AB%E5%BF%83%E9%9A%9C%E7%A4%99%E8%80%85%E6%9C%8D%E5%8B%99%E4%B8%AD%E5%BF%83"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>查詢服務中心</a>
+    </div>
+  </div>
+
+
+  <!-- 有補助嗎 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">2</span><h3>有租金補助嗎？</h3></div>
+    <p>有的。政府的「<strong>300億元中央擴大租金補貼</strong>」（租金補貼2.0）每戶每月補助約 2,000～8,000 元，金額依縣市與身分分級而不同。</p>
+    <div class="care">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>對精障個案特別重要的三件事</h4>
+      <ul>
+        <li><strong>身心障礙者屬「弱勢加碼」對象</strong>，補助金額可依規定加成（需附身障證明）</li>
+        <li><strong>領租金補貼不會影響</strong>你原有的身障補助、低收/中低收身分（不列入所得計算）</li>
+        <li><strong>申請不需要房東同意</strong>，所得與財產由政府直接查調</li>
+      </ul>
+    </div>
+    <div class="tip">💡 <b>提醒</b>：115年（2026）起新申請的房子必須是「<b>合法住宅</b>」（有房屋稅籍、已完成登記）才能領補貼。看房前先確認，避免租到不能申請補助的房子。</div>
+    <div class="mini-actions">
+      <a class="btn btn-map full" target="_blank" href="https://has.cpami.gov.tw/"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>租金補貼線上申請平台</a>
+    </div>
+  </div>
+
+  <!-- 申請流程 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">3</span><h3>租屋與補助流程</h3></div>
+    <div class="flow">
+      <div class="fstep"><div class="fdot">1</div><div class="ftext"><b>評估需求與負擔</b><span>由承辦單位與你討論：想住哪、預算多少、生活機能需求</span></div></div>
+      <div class="fstep"><div class="fdot">2</div><div class="ftext"><b>找房、看房</b><span>承辦單位或仲介協助找房，確認是合法住宅、環境安全</span></div></div>
+      <div class="fstep"><div class="fdot">3</div><div class="ftext"><b>簽訂租約</b><span>租約要載明房東姓名等資訊，逐條看清楚再簽</span></div></div>
+      <div class="fstep"><div class="fdot">4</div><div class="ftext"><b>線上申請租金補貼</b><span>備齊租約、帳戶、身障證明，上傳到補貼平台</span></div></div>
+      <div class="fstep"><div class="fdot">5</div><div class="ftext"><b>等待審核（約2～3個月）</b><span>可上網查進度，核定後按月撥款入帳</span></div></div>
+      <div class="fstep"><div class="fdot">6</div><div class="ftext"><b>入住與持續支持</b><span>團隊持續陪伴生活適應、社區參與與資源連結</span></div></div>
+    </div>
+  </div>
+
+  <!-- 要準備的文件 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">4</span><h3>申請補助要準備什麼？</h3></div>
+    <ul>
+      <li>申請書（線上填寫）</li>
+      <li>定期租賃契約影本（要載明房東姓名）</li>
+      <li>本人金融機構帳戶（存摺封面）</li>
+      <li>身心障礙證明影本（加碼用）</li>
+      <li>低收／中低收入戶證明（若有）</li>
+      <li>若房屋資料不全：近半年水電費單、門牌證明或里長證明</li>
+    </ul>
+  </div>
+
+  <!-- 注意事項 -->
+  <div class="signs">
+    <h4><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v3h2v-3h-2zm0 4v2h2v-2h-2z"/></svg>看房簽約注意事項</h4>
+    <ul>
+      <li>確認是「合法住宅」，否則無法申請補貼（頂加、違建要小心）</li>
+      <li>租約逐條看清楚：租金、押金、期限、提前解約怎麼算</li>
+      <li>不要急著付錢，看不懂的地方先問團隊或社工</li>
+      <li>留好租約、收據與繳費紀錄</li>
+      <li>確認周邊生活機能：就醫、交通、採買是否方便</li>
+    </ul>
+  </div>
+
+  <!-- 常見問答 -->
+  <div class="block-h" style="margin:22px 0 12px;"><span class="bnum" style="background:var(--orange);">Q</span><h3>常見問題</h3></div>
+
+  <details class="faq">
+    <summary><span class="q">有工作會影響租屋或補助嗎？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans">有工作<strong>通常是加分</strong>，代表有穩定收入、房東更願意租給你。但租金補貼有「所得限制」（每人每月平均所得需低於當地標準），如果收入較高，可能影響補貼資格或金額。建議申請前讓社工幫你試算，工作收入與補助怎麼搭配最有利。</div>
+  </details>
+
+  <details class="faq">
+    <summary><span class="q">如果發病住院了，住院期間要付房租嗎？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans"><strong>要的</strong>。只要租約還在、房子還租著，房租就要照付——因為房子保留給你，回來還能住。租金補貼方面，只要你仍承租同一間房、租約有效，原則上補貼會持續。住院期間請<strong>盡快通知你的服務團隊</strong>，我們會協助與房東溝通、確認補貼是否受影響，並安排出院後的銜接。如果住院較久、確定不再續租，再與團隊討論退租事宜。</div>
+  </details>
+
+  <details class="faq">
+    <summary><span class="q">房東會知道我有精神疾病嗎？需要說嗎？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans">這是<strong>你的隱私，沒有義務一定要告知</strong>。租屋重點是你能穩定生活、按時付租。是否讓房東知道、知道多少，可以和團隊一起評估，找到最自在又安全的做法。申請租金補貼也不需要向房東透露你的診斷。</div>
+  </details>
+
+  <details class="faq">
+    <summary><span class="q">沒有穩定收入，付得起房租嗎？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans">可以一起想辦法。除了租金補貼，還能搭配身障補助、就業協助、福利身分等資源。團隊會幫你做<strong>租金負擔評估</strong>，挑選負擔得起的房子，並連結可運用的補助，讓你住得安心、不會被房租壓垮。</div>
+  </details>
+
+  <details class="faq">
+    <summary><span class="q">找不到願意租的房東怎麼辦？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans">這確實會遇到。可以透過<strong>包租代管業者</strong>或社工協助媒合對身障者友善的房源；申請補助通過後，房東還能成為「公益出租人」享有稅務優惠，這也是說服房東的好理由。讓團隊陪你一起找、一起談，會比自己找順利很多。</div>
+  </details>
+
+  <details class="faq">
+    <summary><span class="q">租到一半想搬走可以嗎？</span><span class="arr"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg></span></summary>
+    <div class="ans">可以，但要看租約怎麼約定（提前解約可能要賠押金或違約金）。搬家前先看租約的解約條款，並通知團隊協助處理退租、押金與補貼異動。換租新房子時，記得新房子也要是合法住宅，才能繼續申請補貼。</div>
+  </details>
+
+  <div class="block" style="background:var(--ink);color:#fff;margin-top:18px;">
+    <div class="block-h"><span class="bnum" style="background:var(--amber);color:var(--ink);">♥</span><h3 style="color:#fff;">還有問題？我們陪你一起面對</h3></div>
+    <p style="color:rgba(255,255,255,.85);">租屋與社區居住由承辦單位提供服務，愛迪樂會陪你一起轉介、接上資源——從找對單位、看房、簽約到申請補助，你不必一個人面對。</p>
+    <div class="mini-actions">
+      <a class="btn full" style="background:var(--orange);color:#fff;" href="tel:1925"><svg viewBox="0 0 24 24" style="fill:#fff;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>諮詢專線 1925</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:#7c9296;font-size:13.5px;padding:14px 10px 0;">
+    租金補貼金額、資格與規定每年可能調整，<strong>實際以內政部公告為準</strong>。<br>申請前建議與服務團隊或社工確認最新規定。
+  </div>
+
+</main>
+
+</div><!-- /tab-rent -->
 
 <script>
   // Filter chips
