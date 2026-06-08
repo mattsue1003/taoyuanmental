@@ -180,13 +180,15 @@
   .tabbar{
     position:sticky;top:0;z-index:50;background:rgba(244,248,248,.95);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
-    display:flex;max-width:760px;margin:0 auto;padding:8px 16px;gap:8px;
+    display:flex;max-width:760px;margin:0 auto;padding:8px 12px;gap:7px;
+    overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
   }
+  .tabbar::-webkit-scrollbar{display:none;}
   .tabbtn{
-    flex:1;padding:11px 4px;border-radius:12px;cursor:pointer;
+    flex:1 0 auto;padding:10px 12px;border-radius:12px;cursor:pointer;
     font-family:inherit;font-size:14.5px;font-weight:800;color:#5a7378;
     background:#fff;border:2px solid var(--line);transition:all .18s;
-    display:flex;align-items:center;justify-content:center;gap:5px;
+    display:flex;align-items:center;justify-content:center;gap:5px;white-space:nowrap;
   }
   .tabbtn svg{width:17px;height:17px;fill:currentColor;flex:0 0 auto;}
   .tabbtn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
@@ -314,6 +316,10 @@
   <button class="tabbtn" data-tab="rent">
     <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     租屋協助
+  </button>
+  <button class="tabbtn" data-tab="money">
+    <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1H6.32c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+    金錢管理
   </button>
 </nav>
 
@@ -985,6 +991,138 @@
 </main>
 
 </div><!-- /tab-rent -->
+
+<!-- ============ MONEY TAB ============ -->
+<div class="tab-page" id="tab-money">
+
+<header class="help-header" style="background:linear-gradient(150deg,#1d5f4a 0%,var(--teal-d) 100%);">
+  <span class="badge" style="background:var(--amber);color:var(--ink);">金錢管理</span>
+  <h1>把錢顧好，生活就穩了</h1>
+  <p>會用錢、存得住，才付得起房租、過得安穩。不用很厲害，從幾個小習慣開始就好。</p>
+</header>
+
+<main>
+
+  <div class="help-intro" style="border-left-color:#1d5f4a;">
+    錢顧好，是<strong>自立生活與順利租屋</strong>很重要的基礎。下面的方法都很簡單，可以自己做，也可以請<strong>愛迪樂團隊或工作人員陪你一起練習</strong>。一次做一點就好。
+  </div>
+
+  <!-- 1 記帳與預算 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">1</span><h3>先知道錢花去哪：記帳與預算</h3></div>
+    <p>管錢的第一步，是搞清楚「錢從哪來、花到哪去」。</p>
+    <ul>
+      <li class="chk">每天花的錢，隨手記下來（手機備忘錄、小本子都可以）</li>
+      <li class="chk">每週看一次：哪些是「一定要花」、哪些是「可以省」</li>
+      <li class="chk">把錢分成三份：<strong>固定支出</strong>（房租、水電）、<strong>生活費</strong>（吃飯、交通）、<strong>存起來</strong></li>
+    </ul>
+    <div class="care">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>簡單預算口訣：先付帳單，再花生活，剩下存起來</h4>
+      <ul>
+        <li>領到錢／補助，第一件事先把房租、水電留好</li>
+        <li>剩下的才是這個月可以花的生活費</li>
+        <li>能留一點就留一點，哪怕只有幾十元</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2 優先保住房租 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">2</span><h3>最重要：先顧好房租</h3></div>
+    <p>有地方住，生活才穩。所以<strong>房租是每個月第一順位</strong>，不能挪去花別的。</p>
+    <ul>
+      <li class="chk">領到錢的當天，先把房租那筆錢「分開放」或先繳掉</li>
+      <li class="chk">可以開一個「房租專用帳戶」，錢進去就不要動</li>
+      <li class="chk">把繳房租的日子記在手機行事曆，設提醒</li>
+      <li class="chk">租金補貼入帳後，正好補上房租，記得對帳</li>
+    </ul>
+    <div class="tip">💡 <b>提醒</b>：如果某個月真的快繳不出房租，<b>不要拖、不要躲</b>，盡早告訴工作人員，越早處理越好辦。</div>
+  </div>
+
+  <!-- 3 小額存錢 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">3</span><h3>慢慢存：小錢也能變安心</h3></div>
+    <p>存錢不用一次存很多，重點是「<strong>持續、固定</strong>」。存下來的錢，是你遇到突發狀況時的安全感。</p>
+    <ul>
+      <li class="chk">設一個小目標：例如每週存 50～100 元</li>
+      <li class="chk">用一個「不常動的帳戶」或撲滿，存了就別輕易拿出來</li>
+      <li class="chk">把零錢、發票小獎、省下來的錢丟進去</li>
+      <li class="chk">先存「緊急預備金」——生病、修東西、急用時用得到</li>
+    </ul>
+    <div class="care">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>為什麼要存錢？</h4>
+      <ul>
+        <li>房東可能要押金、搬家要錢——先存好就不慌</li>
+        <li>生病、東西壞了，有預備金就不怕</li>
+        <li>看到自己存得起來，會更有信心過生活</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4 避免被騙、避免逾期 -->
+  <div class="signs">
+    <h4><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v3h2v-3h-2zm0 4v2h2v-2h-2z"/></svg>守住你的錢：別被騙、別逾期</h4>
+    <ul>
+      <li>陌生電話、簡訊說「中獎」「欠錢」「幫忙匯款」——多半是詐騙，<strong>先掛掉、別轉帳</strong></li>
+      <li>不把提款卡、密碼、帳戶借給別人（包括說要「幫你賺錢」的人）</li>
+      <li>不亂簽借據、不辦不懂的貸款或分期</li>
+      <li>帳單（水電、電話、卡費）<strong>按時繳，不要逾期</strong>，逾期會多付錢、影響信用</li>
+      <li>有人逼你花錢、借錢，或你不確定的金錢決定，<strong>先問工作人員或家人</strong></li>
+    </ul>
+  </div>
+  <div class="tip" style="margin-top:0;">📞 接到可疑電話、懷疑被詐騙，可打 <b>165 反詐騙專線</b>確認。</div>
+
+  <!-- 5 補助與收入規劃 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">5</span><h3>補助與收入，這樣規劃</h3></div>
+    <p>很多人靠補助和工作收入過生活，把它們安排好，日子會更穩。</p>
+    <ul>
+      <li class="chk">先確認自己有哪些固定收入：身障補助、租金補貼、工作收入等</li>
+      <li class="chk">補助多半「按月入帳」，可以對照每月的固定支出來安排</li>
+      <li class="chk">記得各項補助的<strong>申請與續辦時間</strong>，別讓資格中斷</li>
+      <li class="chk">有工作後收入變動，先問社工：會不會影響補助、怎麼搭配最好</li>
+      <li class="chk">不確定自己符合哪些補助，可請工作人員幫你盤點</li>
+    </ul>
+    <div class="care">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>一個月的錢，這樣分配參考</h4>
+      <ul>
+        <li>① 房租、水電（一定先留）</li>
+        <li>② 吃飯、交通、日用品</li>
+        <li>③ 看病、買藥的錢</li>
+        <li>④ 存起來（再少都好）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 工作人員提示 -->
+  <div class="block" style="background:var(--cloud);">
+    <div class="block-h"><span class="bnum" style="background:var(--teal);">👥</span><h3>給陪伴者／工作人員</h3></div>
+    <p style="margin-bottom:6px;">陪個案練習金錢管理時，可以這樣帶：</p>
+    <ul>
+      <li class="chk">從「記帳」開始，用最簡單的工具，降低門檻</li>
+      <li class="chk">以「保住房租」為核心目標，建立優先順序的習慣</li>
+      <li class="chk">存錢採「小額、固定、看得見進度」，給予正向回饋</li>
+      <li class="chk">留意詐騙與被借錢風險，必要時協助設定帳戶分流</li>
+      <li class="chk">結合補助盤點與續辦提醒，避免資格中斷</li>
+    </ul>
+  </div>
+
+  <!-- 求助卡片 -->
+  <div class="block" style="background:var(--ink);color:#fff;margin-top:6px;">
+    <div class="block-h"><span class="bnum" style="background:var(--amber);color:var(--ink);">♥</span><h3 style="color:#fff;">錢的事有困難，找人一起想</h3></div>
+    <p style="color:rgba(255,255,255,.85);">不會記帳、存不下來、被錢的事壓得喘不過氣，都可以找愛迪樂團隊或工作人員一起討論，我們會陪你慢慢上手。</p>
+    <div class="mini-actions">
+      <a class="btn full" style="background:var(--orange);color:#fff;" href="tel:1925"><svg viewBox="0 0 24 24" style="fill:#fff;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>需要協助，打 1925</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:#7c9296;font-size:13.5px;padding:14px 10px 0;">
+    以上為一般金錢管理建議，提供生活參考。<br>個別補助與財務狀況，請與你的社工或服務團隊討論。
+  </div>
+
+</main>
+
+</div><!-- /tab-money -->
 
 <script>
   // Filter chips
