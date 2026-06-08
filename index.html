@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南桃園身心支持資源｜愛迪樂居家職能治療所</title>
+<style>
+  :root{
+    --orange:#E8552D;
+    --amber:#F4A93C;
+    --teal:#028090;
+    --teal-d:#016570;
+    --ink:#12343B;
+    --cloud:#F4F8F8;
+    --line:#dce6e6;
+    --white:#ffffff;
+    --shadow:0 4px 20px rgba(18,52,59,.08);
+    --shadow-h:0 8px 30px rgba(18,52,59,.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Microsoft JhengHei","微軟正黑體","PingFang TC",sans-serif;
+    background:var(--cloud);
+    color:var(--ink);
+    line-height:1.7;
+    font-size:17px;
+    -webkit-text-size-adjust:100%;
+  }
+
+  /* ===== Header ===== */
+  header{
+    background:linear-gradient(150deg,var(--ink) 0%,var(--teal-d) 100%);
+    color:#fff;
+    padding:32px 20px 26px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;right:-40px;top:-40px;
+    width:180px;height:180px;border-radius:50%;
+    background:rgba(244,169,60,.18);
+  }
+  header .badge{
+    display:inline-block;background:var(--orange);color:#fff;
+    font-size:14px;font-weight:700;padding:5px 16px;border-radius:20px;
+    margin-bottom:14px;letter-spacing:1px;
+  }
+  header h1{font-size:27px;font-weight:800;letter-spacing:1px;margin-bottom:8px;}
+  header p{font-size:15.5px;opacity:.9;max-width:560px;margin:0 auto;}
+  header .org{margin-top:14px;font-size:14px;opacity:.8;}
+
+  /* ===== Intro card ===== */
+  .intro{
+    max-width:760px;margin:-16px auto 0;padding:0 16px;position:relative;z-index:2;
+  }
+  .intro-box{
+    background:#fff;border-radius:16px;box-shadow:var(--shadow);
+    padding:18px 20px;border-left:6px solid var(--amber);
+    font-size:15.5px;color:#3a5359;
+  }
+  .intro-box strong{color:var(--teal-d);}
+
+  /* ===== Search ===== */
+  .search-wrap{max-width:760px;margin:18px auto 0;padding:0 16px;}
+  .search-box{position:relative;}
+  .search-box input{
+    width:100%;padding:15px 18px 15px 48px;font-size:17px;
+    border:2px solid var(--line);border-radius:14px;background:#fff;
+    font-family:inherit;color:var(--ink);transition:border .2s;
+  }
+  .search-box input:focus{outline:none;border-color:var(--teal);}
+  .search-box svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);
+    width:22px;height:22px;fill:#9fb3b5;}
+
+  /* ===== Filter chips ===== */
+  .filters{
+    max-width:760px;margin:14px auto 0;padding:0 16px 4px;
+    display:flex;gap:9px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .filters::-webkit-scrollbar{display:none;}
+  .chip{
+    flex:0 0 auto;padding:9px 16px;border-radius:22px;border:2px solid var(--line);
+    background:#fff;font-size:14.5px;font-weight:700;color:#5a7378;cursor:pointer;
+    white-space:nowrap;transition:all .18s;font-family:inherit;
+  }
+  .chip.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+
+  /* ===== Section ===== */
+  main{max-width:760px;margin:0 auto;padding:22px 16px 30px;}
+  .section{margin-bottom:28px;}
+  .section.hidden{display:none;}
+  .sec-head{display:flex;align-items:center;gap:11px;margin-bottom:13px;padding-left:2px;}
+  .sec-icon{
+    width:42px;height:42px;border-radius:12px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sec-icon svg{width:24px;height:24px;fill:#fff;}
+  .sec-title{font-size:19px;font-weight:800;color:var(--ink);}
+  .sec-sub{font-size:13.5px;color:#7c9296;font-weight:500;}
+
+  /* ===== Card ===== */
+  .card{
+    background:#fff;border-radius:15px;box-shadow:var(--shadow);
+    padding:16px 17px;margin-bottom:12px;transition:box-shadow .2s,transform .2s;
+  }
+  .card.hidden{display:none;}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .card-name{font-size:18px;font-weight:800;color:var(--ink);line-height:1.4;}
+  .card-tag{
+    flex:0 0 auto;font-size:12px;font-weight:700;padding:3px 11px;border-radius:14px;
+    color:#fff;white-space:nowrap;margin-top:3px;
+  }
+  .card-help{font-size:15px;color:#48626a;margin:9px 0 4px;}
+  .card-meta{font-size:14px;color:#6b8388;margin-top:6px;}
+  .card-meta .label{color:#9fb3b5;font-weight:700;margin-right:4px;}
+  .card-hours{display:inline-block;background:var(--cloud);color:var(--teal-d);
+    font-size:13px;font-weight:700;padding:3px 11px;border-radius:12px;margin-top:9px;}
+
+  .actions{display:flex;gap:9px;margin-top:13px;}
+  .btn{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:11px;border-radius:11px;font-size:15.5px;font-weight:700;
+    text-decoration:none;font-family:inherit;border:none;cursor:pointer;transition:opacity .15s;
+  }
+  .btn:active{opacity:.7;}
+  .btn svg{width:18px;height:18px;}
+  .btn-call{background:var(--orange);color:#fff;}
+  .btn-call svg{fill:#fff;}
+  .btn-map{background:#fff;color:var(--teal-d);border:2px solid var(--teal);}
+  .btn-map svg{fill:var(--teal-d);}
+  .btn.full{flex:none;width:100%;}
+
+  /* color accents per section */
+  .ic-orange{background:var(--orange);}
+  .ic-teal{background:var(--teal);}
+  .ic-amber{background:var(--amber);}
+  .ic-ink{background:var(--ink);}
+  .tag-orange{background:var(--orange);}
+  .tag-teal{background:var(--teal);}
+  .tag-amber{background:var(--amber);}
+  .tag-ink{background:var(--ink);}
+
+  .no-result{text-align:center;color:#7c9296;padding:40px 20px;font-size:16px;display:none;}
+  .no-result.show{display:block;}
+
+  /* ===== Emergency banner ===== */
+  .emergency{
+    background:linear-gradient(135deg,#B8342A,#E8552D);
+    color:#fff;border-radius:15px;padding:17px 18px;margin-bottom:22px;
+    box-shadow:var(--shadow);
+  }
+  .emergency h3{font-size:16.5px;font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+  .emergency h3 svg{width:22px;height:22px;fill:#fff;}
+  .emergency p{font-size:14.5px;opacity:.95;margin-bottom:10px;}
+  .em-btns{display:flex;gap:9px;flex-wrap:wrap;}
+  .em-btn{
+    flex:1;min-width:120px;background:rgba(255,255,255,.95);color:#B8342A;
+    text-decoration:none;font-weight:800;font-size:15px;padding:11px;
+    border-radius:11px;text-align:center;
+  }
+  .em-btn:active{opacity:.8;}
+
+  footer{
+    background:var(--ink);color:rgba(255,255,255,.75);text-align:center;
+    padding:24px 20px;font-size:13px;line-height:1.8;
+  }
+  footer strong{color:var(--amber);}
+  footer .note{margin-top:8px;font-size:12px;opacity:.65;}
+
+  @media(max-width:480px){
+    header h1{font-size:23px;}
+    body{font-size:16px;}
+    .card-name{font-size:17px;}
+  }
+
+  /* ===== Top tab switcher ===== */
+  .tabbar{
+    position:sticky;top:0;z-index:50;background:rgba(244,248,248,.95);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    display:flex;max-width:760px;margin:0 auto;padding:8px 16px;gap:8px;
+  }
+  .tabbtn{
+    flex:1;padding:11px 8px;border-radius:12px;cursor:pointer;
+    font-family:inherit;font-size:15.5px;font-weight:800;color:#5a7378;
+    background:#fff;border:2px solid var(--line);transition:all .18s;
+    display:flex;align-items:center;justify-content:center;gap:7px;
+  }
+  .tabbtn svg{width:19px;height:19px;fill:currentColor;}
+  .tabbtn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .tab-page{display:none;}
+  .tab-page.active{display:block;}
+
+  /* ===== Self-help page ===== */
+  .help-header{
+    background:linear-gradient(150deg,var(--teal-d) 0%,#024a52 100%);
+    color:#fff;padding:30px 20px 24px;text-align:center;position:relative;overflow:hidden;
+  }
+  .help-header::after{content:"";position:absolute;left:-50px;bottom:-50px;
+    width:170px;height:170px;border-radius:50%;background:rgba(244,169,60,.16);}
+  .help-header .badge{background:var(--amber);color:var(--ink);}
+  .help-header h1{font-size:25px;font-weight:800;margin-bottom:8px;}
+  .help-header p{font-size:15px;opacity:.9;max-width:560px;margin:0 auto;}
+
+  .dim-switch{max-width:760px;margin:18px auto 0;padding:0 16px;display:flex;gap:9px;}
+  .dim-btn{
+    flex:1;padding:13px 6px;border-radius:14px;border:2px solid var(--line);
+    background:#fff;cursor:pointer;font-family:inherit;text-align:center;transition:all .18s;
+  }
+  .dim-btn .d-em{font-size:22px;display:block;margin-bottom:3px;}
+  .dim-btn .d-t{font-size:15px;font-weight:800;color:#5a7378;}
+  .dim-btn .d-s{font-size:11.5px;color:#9fb3b5;font-weight:600;}
+  .dim-btn.active{border-color:var(--teal);background:var(--teal);}
+  .dim-btn.active .d-t,.dim-btn.active .d-s{color:#fff;}
+
+  .dim-page{display:none;}
+  .dim-page.active{display:block;}
+
+  .help-intro{
+    background:#fff;border-radius:15px;box-shadow:var(--shadow);
+    padding:16px 18px;margin-bottom:18px;border-left:6px solid var(--teal);
+    font-size:15.5px;color:#3a5359;
+  }
+
+  .block{background:#fff;border-radius:15px;box-shadow:var(--shadow);
+    padding:17px 18px;margin-bottom:14px;}
+  .block-h{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .block-h .bnum{
+    width:34px;height:34px;border-radius:10px;background:var(--teal);color:#fff;
+    font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .block-h h3{font-size:17.5px;font-weight:800;color:var(--ink);}
+  .block p{font-size:15px;color:#48626a;margin-bottom:8px;}
+  .block ul{list-style:none;margin:4px 0 4px;}
+  .block li{font-size:15px;color:#48626a;padding:6px 0 6px 26px;position:relative;line-height:1.6;}
+  .block li::before{content:"";position:absolute;left:4px;top:13px;
+    width:8px;height:8px;border-radius:50%;background:var(--amber);}
+  .block li.chk::before{content:"✓";background:none;color:var(--teal);font-weight:900;
+    font-size:15px;top:6px;left:2px;width:auto;height:auto;}
+
+  .signs{background:#FFF5F0;border:1.5px solid #f6cdb8;border-radius:14px;
+    padding:15px 17px;margin-bottom:14px;}
+  .signs h4{color:var(--orange);font-size:16px;font-weight:800;margin-bottom:9px;
+    display:flex;align-items:center;gap:7px;}
+  .signs h4 svg{width:20px;height:20px;fill:var(--orange);}
+  .signs ul{list-style:none;}
+  .signs li{font-size:15px;color:#7a4a38;padding:6px 0 6px 26px;position:relative;line-height:1.6;}
+  .signs li::before{content:"";position:absolute;left:4px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--orange);}
+
+  .care{background:var(--cloud);border-radius:14px;padding:15px 17px;margin-bottom:14px;}
+  .care h4{color:var(--teal-d);font-size:16px;font-weight:800;margin-bottom:9px;
+    display:flex;align-items:center;gap:7px;}
+  .care h4 svg{width:20px;height:20px;fill:var(--teal-d);}
+  .care ul{list-style:none;}
+  .care li{font-size:15px;color:#3a5359;padding:6px 0 6px 26px;position:relative;line-height:1.6;}
+  .care li::before{content:"";position:absolute;left:4px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+
+  .danger{background:linear-gradient(135deg,#B8342A,#E8552D);color:#fff;
+    border-radius:15px;padding:17px 18px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .danger h3{font-size:16.5px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+  .danger h3 svg{width:22px;height:22px;fill:#fff;}
+  .danger ul{list-style:none;}
+  .danger li{color:#fff;font-size:15px;padding:6px 0 6px 26px;position:relative;line-height:1.6;}
+  .danger li::before{content:"";position:absolute;left:4px;top:13px;width:8px;height:8px;border-radius:50%;background:#fff;}
+  .danger .act{margin-top:11px;}
+  .danger .act a{display:block;background:rgba(255,255,255,.95);color:#B8342A;
+    text-decoration:none;font-weight:800;font-size:16px;padding:13px;border-radius:11px;text-align:center;}
+  .danger .act a:active{opacity:.8;}
+
+  .flow .fstep{display:flex;gap:13px;margin-bottom:4px;padding-bottom:14px;position:relative;}
+  .flow .fstep:not(:last-child)::after{content:"";position:absolute;left:16px;top:34px;bottom:0;
+    width:2px;background:var(--line);}
+  .flow .fdot{width:34px;height:34px;border-radius:50%;background:var(--amber);color:var(--ink);
+    font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto;z-index:1;}
+  .flow .ftext{padding-top:3px;}
+  .flow .ftext b{display:block;font-size:16px;color:var(--ink);margin-bottom:2px;}
+  .flow .ftext span{font-size:14.5px;color:#6b8388;}
+
+  .mini-actions{display:flex;gap:9px;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<nav class="tabbar">
+  <button class="tabbtn active" data-tab="resources">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+    資源轉介
+  </button>
+  <button class="tabbtn" data-tab="selfhelp">
+    <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    自我幫助
+  </button>
+</nav>
+
+<div class="tab-page active" id="tab-resources">
+
+<header>
+  <span class="badge">南桃園身心支持資源</span>
+  <h1>找對單位，安心向前一步</h1>
+  <p>中壢・平鎮・楊梅・龍潭一帶，協助你穩定生活、走進社區、準備就業的資源整理</p>
+  <div class="org">愛迪樂居家職能治療所 ｜ 精神病個案社區適應與生活重建</div>
+</header>
+
+<div class="intro">
+  <div class="intro-box">
+    這裡整理了南桃園地區可以<strong>幫助你的單位</strong>。不論你需要日間活動、找地方住、想找工作、需要諮詢或情緒支持，都能在這裡找到方向。<strong>點電話可直接撥號，點地圖可導航前往。</strong>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>
+    <input type="text" id="search" placeholder="搜尋單位名稱、地區或需求…">
+  </div>
+</div>
+
+<div class="filters" id="filters">
+  <button class="chip active" data-f="all">全部</button>
+  <button class="chip" data-f="day">日間活動</button>
+  <button class="chip" data-f="live">居住安置</button>
+  <button class="chip" data-f="job">就業準備</button>
+  <button class="chip" data-f="med">看診諮詢</button>
+  <button class="chip" data-f="welfare">福利協助</button>
+</div>
+
+<main>
+
+  <!-- Emergency -->
+  <div class="emergency">
+    <h3><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>遇到緊急狀況，先求助</h3>
+    <p>當你或身邊的人有立即危險、強烈情緒困擾或想傷害自己時，請立刻求助，隨時都有人接聽。</p>
+    <div class="em-btns">
+      <a class="em-btn" href="tel:1925">心理諮詢專線 1925</a>
+      <a class="em-btn" href="tel:1995">生命線 1995</a>
+      <a class="em-btn" href="tel:119">緊急救護 119</a>
+    </div>
+  </div>
+
+  <!-- 會所 -->
+  <section class="section" data-cat="day job">
+    <div class="sec-head">
+      <div class="sec-icon ic-orange"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+      <div><div class="sec-title">精神復健會所</div><div class="sec-sub">白天來活動、交朋友、練習生活與工作能力</div></div>
+    </div>
+
+    <div class="card" data-cat="day job" data-region="桃園" data-keys="拓樂 會所 桃園">
+      <div class="card-top"><div class="card-name">拓樂會所</div><span class="card-tag tag-orange">會所</span></div>
+      <div class="card-help">中華拓樂健康促進協會。提供日間活動、人際互動、生活與就業能力練習。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市桃園區文中一路136號2樓</div>
+      <span class="card-hours">服務時間 9:00–16:00</span>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:033600182"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市桃園區文中一路136號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="day job" data-region="平鎮" data-keys="沐陽 伊甸 會所 平鎮">
+      <div class="card-top"><div class="card-name">伊甸沐陽會所</div><span class="card-tag tag-orange">會所</span></div>
+      <div class="card-help">伊甸基金會桃園分事務所。提供日間活動、社區參與與支持性服務。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市平鎮區大連街49號2樓</div>
+      <span class="card-hours">服務時間 9:00–17:00</span>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0343903700"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市平鎮區大連街49號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="day job" data-region="中壢" data-keys="欣晴 康復之友 會所 中壢">
+      <div class="card-top"><div class="card-name">欣晴會所</div><span class="card-tag tag-orange">會所</span></div>
+      <div class="card-help">桃園市康復之友協會。提供日間活動、社交練習與就業前準備。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市中壢區元化路216號10樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344250581"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市中壢區元化路216號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 社區復健中心 -->
+  <section class="section" data-cat="day">
+    <div class="sec-head">
+      <div class="sec-icon ic-teal"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-2v-2h2v2zm-4 0H8v-2h2v2zm4-4h-2v-2h2v2zm-4 0H8v-2h2v2zm6-4H8V7h8v2z"/></svg></div>
+      <div><div class="sec-title">社區復健中心（日間型）</div><div class="sec-sub">白天來做復健與技能訓練，晚上回家</div></div>
+    </div>
+
+    <div class="card" data-cat="day" data-region="中壢" data-keys="佳欣 社區復健 中壢">
+      <div class="card-top"><div class="card-name">佳欣社區復健中心</div><span class="card-tag tag-teal">日間</span></div>
+      <div class="card-help">日間生活與工作技能訓練、職前準備、社交活動。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市中壢區新興路102巷11號6樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344580289"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市中壢區新興路102巷11號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="day" data-region="中壢" data-keys="忻樂 社區復健 中壢">
+      <div class="card-top"><div class="card-name">忻樂社區復健中心</div><span class="card-tag tag-teal">日間</span></div>
+      <div class="card-help">日間復健活動、生活自理與人際互動練習。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市中壢區中正路82號5樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344263799"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市中壢區中正路82號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="day" data-region="龍潭" data-keys="大石門 社區復健 龍潭">
+      <div class="card-top"><div class="card-name">大石門社區復健中心</div><span class="card-tag tag-teal">日間</span></div>
+      <div class="card-help">日間復健、技能訓練與社區參與活動。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市龍潭區中正路三坑段571、573號1樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344714189"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市龍潭區中正路三坑段571號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 居住安置 -->
+  <section class="section" data-cat="live">
+    <div class="sec-head">
+      <div class="sec-icon ic-amber"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+      <div><div class="sec-title">居住與安置（住宿型）</div><div class="sec-sub">需要有人陪伴照顧、找地方安心住下來</div></div>
+    </div>
+
+    <div class="card" data-cat="live" data-region="中壢" data-keys="立恩 康復之家 中壢 住宿">
+      <div class="card-top"><div class="card-name">立恩康復之家</div><span class="card-tag tag-amber">住宿</span></div>
+      <div class="card-help">24小時居住照顧，協助穩定病情、學習獨立生活。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市中壢區信義路56號</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344253870"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市中壢區信義路56號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="live" data-region="中壢" data-keys="旭祐 康復之家 中壢 住宿">
+      <div class="card-top"><div class="card-name">旭祐康復之家</div><span class="card-tag tag-amber">住宿</span></div>
+      <div class="card-help">24小時居住照顧與生活復健支持。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市中壢區廈門街91號3樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344688803"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市中壢區廈門街91號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="live" data-region="楊梅" data-keys="蓮安 康復之家 楊梅 住宿 社區居住">
+      <div class="card-top"><div class="card-name">蓮安康復之家</div><span class="card-tag tag-amber">住宿</span></div>
+      <div class="card-help">24小時居住照顧，並提供非機構式社區居住支持服務。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市楊梅區新農街6號3樓</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344782000"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市楊梅區新農街6號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="live" data-region="龍潭" data-keys="龍潭 荃閤 康復之家 住宿">
+      <div class="card-top"><div class="card-name">龍潭康復之家／荃閤康復之家</div><span class="card-tag tag-amber">住宿</span></div>
+      <div class="card-help">龍潭區24小時居住照顧機構。</div>
+      <div class="card-meta"><span class="label">電話</span>龍潭 03-411-6179　荃閤 03-411-6973</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344116179"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打龍潭康家</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 就業準備 -->
+  <section class="section" data-cat="job">
+    <div class="sec-head">
+      <div class="sec-icon ic-ink"><svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg></div>
+      <div><div class="sec-title">就業與職業準備</div><div class="sec-sub">想找工作、了解自己適合什麼、學習職場技能</div></div>
+    </div>
+
+    <div class="card" data-cat="job" data-region="桃園" data-keys="職業重建 就業 桃園市政府">
+      <div class="card-top"><div class="card-name">桃園市身心障礙者職業重建服務</div><span class="card-tag tag-ink">就業</span></div>
+      <div class="card-help">職業重建個案管理員協助評估能力、就業前準備、媒合支持性就業與職業訓練。可請會所或社復中心轉介。</div>
+      <div class="card-meta"><span class="label">洽詢</span>桃園市政府勞動局 / 各區職業重建窗口</div>
+      <div class="actions">
+        <a class="btn btn-map full" target="_blank" href="https://www.google.com/search?q=桃園市身心障礙者職業重建服務窗口"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>查詢職重窗口</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="job welfare" data-region="中壢平鎮" data-keys="就業服務站 台灣就業通 找工作">
+      <div class="card-top"><div class="card-name">就業服務站（中壢／平鎮）</div><span class="card-tag tag-ink">就業</span></div>
+      <div class="card-help">登記求職、職缺媒合、就業諮詢，也可洽詢身心障礙就業服務。</div>
+      <div class="card-meta"><span class="label">線上</span>台灣就業通</div>
+      <div class="actions">
+        <a class="btn btn-map full" target="_blank" href="https://www.taiwanjobs.gov.tw/"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>前往台灣就業通</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 看診諮詢 -->
+  <section class="section" data-cat="med">
+    <div class="sec-head">
+      <div class="sec-icon ic-teal"><svg viewBox="0 0 24 24"><path d="M19 8h-2v3h-3v2h3v3h2v-3h3v-2h-3zM4 8c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4-4-1.79-4-4zm4 6c-2.67 0-8 1.34-8 4v2h10.5a6.97 6.97 0 01-.5-2.5c0-1.31.36-2.54.99-3.59C9.92 14.14 8.91 14 8 14z"/></svg></div>
+      <div><div class="sec-title">看診與心理諮詢</div><div class="sec-sub">需要回診、調整用藥、或想找人談談</div></div>
+    </div>
+
+    <div class="card" data-cat="med" data-region="桃園" data-keys="心理衛生中心 諮詢 桃園">
+      <div class="card-top"><div class="card-name">桃園市社區心理衛生中心</div><span class="card-tag tag-teal">諮詢</span></div>
+      <div class="card-help">心理諮詢、資源連結與轉介的總窗口。不知道該找誰時，可以先打這裡。</div>
+      <div class="card-meta"><span class="label">專線</span>1925（24小時安心專線）</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:1925"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打 1925</a>
+        <a class="btn btn-map" target="_blank" href="https://mental.tycg.gov.tw/"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>官網</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="med" data-region="平鎮" data-keys="壢新醫院 精神科 平鎮 看診">
+      <div class="card-top"><div class="card-name">壢新醫院 精神科</div><span class="card-tag tag-teal">看診</span></div>
+      <div class="card-help">精神科門診、回診追蹤、用藥調整。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市平鎮區廣泰路77號</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344941234"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市平鎮區廣泰路77號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="med" data-region="龍潭" data-keys="敏盛醫院 龍潭 精神科 看診">
+      <div class="card-top"><div class="card-name">敏盛醫院 龍潭分院</div><span class="card-tag tag-teal">看診</span></div>
+      <div class="card-help">精神科門診與身心科相關服務。</div>
+      <div class="card-meta"><span class="label">地址</span>桃園市龍潭區中豐路168號</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0344794151"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市龍潭區中豐路168號"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>導航</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 福利協助 -->
+  <section class="section" data-cat="welfare">
+    <div class="sec-head">
+      <div class="sec-icon ic-orange"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+      <div><div class="sec-title">福利、租屋與生活協助</div><div class="sec-sub">辦理身障證明、補助、找房子、申請喘息</div></div>
+    </div>
+
+    <div class="card" data-cat="welfare" data-region="平鎮" data-keys="身心障礙 服務中心 平鎮 福利 補助">
+      <div class="card-top"><div class="card-name">身心障礙者服務中心（平鎮／楊新觀）</div><span class="card-tag tag-orange">福利</span></div>
+      <div class="card-help">協助申辦身障證明、福利諮詢、資源連結與生活支持。</div>
+      <div class="card-meta"><span class="label">查詢</span>桃園市社會局身障福利</div>
+      <div class="actions">
+        <a class="btn btn-map full" target="_blank" href="https://www.google.com/search?q=桃園市平鎮區身心障礙者服務中心"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>查詢服務中心</a>
+      </div>
+    </div>
+
+    <div class="card" data-cat="welfare" data-region="各區" data-keys="區公所 身障證明 中低收入 租金補貼 福利身分">
+      <div class="card-top"><div class="card-name">各區公所（社會課）</div><span class="card-tag tag-orange">福利</span></div>
+      <div class="card-help">申辦身心障礙證明、中低收入戶、租金補貼等福利身分，取得穩定的經濟支持。</div>
+      <div class="card-meta"><span class="label">前往</span>戶籍所在地區公所</div>
+      <div class="actions">
+        <a class="btn btn-map full" target="_blank" href="https://www.google.com/maps/search/?api=1&query=桃園市區公所"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>找最近的區公所</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="no-result" id="noResult">找不到符合的單位，試試其他關鍵字或選「全部」。</div>
+
+</main>
+
+<footer>
+  <strong>愛迪樂居家職能治療所</strong><br>
+  精神病個案社區適應與生活重建活動<br>
+  有任何不確定，歡迎先與我們聯繫，我們會陪你找到適合的資源。
+  <div class="note">本資源整理參考桃園市政府衛生局社區心理衛生中心公開名單。<br>各單位服務內容與聯絡方式可能異動，前往前請先來電確認。</div>
+</footer>
+
+</div><!-- /tab-resources -->
+
+<!-- ============ SELF-HELP TAB ============ -->
+<div class="tab-page" id="tab-selfhelp">
+
+<header class="help-header">
+  <span class="badge">自我幫助與求助</span>
+  <h1>不舒服的時候，你可以這樣做</h1>
+  <p>無論是身體、心理還是情緒上的不舒服，都有面對的方法與可以求助的人。一步一步來，你不需要自己撐著。</p>
+</header>
+
+<div class="dim-switch">
+  <button class="dim-btn active" data-dim="mind"><span class="d-em">🧠</span><span class="d-t">心</span><span class="d-s">心理症狀</span></button>
+  <button class="dim-btn" data-dim="body"><span class="d-em">🩺</span><span class="d-t">身</span><span class="d-s">身體不適</span></button>
+  <button class="dim-btn" data-dim="spirit"><span class="d-em">🌱</span><span class="d-t">靈</span><span class="d-s">情緒與意義</span></button>
+</div>
+
+<main>
+
+  <!-- ===== 心 ===== -->
+  <div class="dim-page active" id="dim-mind">
+    <div class="help-intro">
+      當你覺得情緒低落、焦慮、睡不著、聽到別人聽不到的聲音，或腦中想法停不下來——這些都是<strong>可以求助的訊號，不是你的錯</strong>。先穩住自己，再一步步找人幫忙。
+    </div>
+
+    <div class="signs">
+      <h4><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v3h2v-3h-2zm0 4v2h2v-2h-2z"/></svg>這些情況，建議找人談談</h4>
+      <ul>
+        <li>連續兩週以上情緒低落、提不起勁、什麼都不想做</li>
+        <li>睡眠或食慾明顯改變，整天睡或睡不著</li>
+        <li>焦慮、緊張到影響日常生活或無法出門</li>
+        <li>聽到或看到別人感受不到的聲音、影像</li>
+        <li>覺得有人要害你、被監視，或想法很混亂</li>
+        <li>對以前喜歡的事都失去興趣</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">1</span><h3>先穩住自己（當下能做的）</h3></div>
+      <div class="care">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>幾個立刻能用的方法</h4>
+        <ul>
+          <li>慢慢深呼吸：吸氣4秒、停2秒、吐氣6秒，重複幾次</li>
+          <li>把注意力拉回現在：說出眼前看到的5樣東西</li>
+          <li>喝口溫水、洗把臉，讓身體先安定下來</li>
+          <li>先離開讓你不舒服的環境，到安全安靜的地方</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">2</span><h3>找人說、找人陪</h3></div>
+      <p>不要一個人硬撐。可以照這個順序找人：</p>
+      <ul>
+        <li class="chk">身邊信任的人：家人、朋友、社工、個管員</li>
+        <li class="chk">你的會所或社區復健中心工作人員</li>
+        <li class="chk">愛迪樂的服務團隊——我們會陪你一起想辦法</li>
+        <li class="chk">24小時安心專線 1925，隨時有人接聽</li>
+      </ul>
+      <div class="mini-actions">
+        <a class="btn btn-call full" href="tel:1925"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打安心專線 1925</a>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">3</span><h3>回診或預約諮詢</h3></div>
+      <p>症狀持續或變嚴重時，回到原本看診的精神科／身心科，讓醫師了解你的狀況。不知道找誰，可先打 1925 或問會所工作人員協助轉介。</p>
+    </div>
+
+    <div class="danger">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v3h2v-3h-2zm0 4v2h2v-2h-2z"/></svg>出現這些念頭，請立刻求助</h3>
+      <ul>
+        <li>有想傷害自己或結束生命的念頭</li>
+        <li>覺得無法控制自己、可能傷到別人</li>
+        <li>完全無法分辨現實、行為失控</li>
+      </ul>
+      <div class="act"><a href="tel:1925">立刻撥打 1925 安心專線</a></div>
+      <div class="act"><a href="tel:119">緊急危險請打 119</a></div>
+    </div>
+  </div>
+
+  <!-- ===== 身 ===== -->
+  <div class="dim-page" id="dim-body">
+    <div class="help-intro">
+      身體不舒服時，先分辨是<strong>一般身體狀況</strong>、<strong>可能是藥物引起</strong>，還是<strong>需要馬上看急診</strong>。看精神科的人身體不適很常見，說出來、處理它，不要忍。
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">1</span><h3>身與心會互相影響</h3></div>
+      <p>心理壓力大時，身體常會跟著不舒服——這叫「身心交互」，是真實的，不是你想太多。</p>
+      <ul>
+        <li>焦慮 → 心悸、胸悶、手抖、頭暈、腸胃不適</li>
+        <li>情緒低落 → 全身無力、疲累、食慾與睡眠改變</li>
+        <li>壓力大 → 頭痛、肩頸緊繃、肚子痛</li>
+      </ul>
+      <div class="care">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>可以先這樣做</h4>
+        <ul>
+          <li>放慢呼吸、坐下休息，先讓身體緩下來</li>
+          <li>記下什麼時候、什麼情況下會不舒服</li>
+          <li>規律作息、適度活動、好好吃飯睡覺</li>
+          <li>持續或反覆出現，就告訴醫師或工作人員</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">2</span><h3>可能是藥物副作用？這樣辨識</h3></div>
+      <p>剛換藥、加藥後出現以下狀況，可能跟藥物有關。先記錄下來，<strong>回診時告訴醫師</strong>，由醫師判斷是否調整。</p>
+      <ul>
+        <li>嗜睡、頭暈、手抖、坐立不安</li>
+        <li>口乾、便祕、體重變化、流口水</li>
+        <li>肌肉僵硬、動作變慢或不自主抖動</li>
+      </ul>
+      <div class="signs">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm-1 6h2v6h-2zm0 8h2v2h-2z"/></svg>很重要的安全提醒</h4>
+        <ul>
+          <li>不舒服時，<strong>不要自己停藥或自行加減藥量</strong></li>
+          <li>突然停藥可能讓症狀變嚴重，務必先問醫師</li>
+          <li>把不舒服寫下來，下次回診一次跟醫師說清楚</li>
+          <li>不確定是不是藥物引起，可打給藥師或診所詢問</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="danger">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 6l7.53 13H4.47L12 8zm-1 4v3h2v-3h-2zm0 4v2h2v-2h-2z"/></svg>有這些情況，立刻看急診或打 119</h3>
+      <ul>
+        <li>持續胸痛、呼吸困難、嘴唇發紫</li>
+        <li>高燒不退合併肌肉僵硬、意識不清（可能是嚴重藥物反應）</li>
+        <li>抽搐、昏倒、叫不醒</li>
+        <li>嚴重過敏：臉部腫脹、全身起疹、喘不過氣</li>
+        <li>吃藥過量或誤食</li>
+      </ul>
+      <div class="act"><a href="tel:119">緊急撥打 119</a></div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">3</span><h3>一般身體不適的就醫流程</h3></div>
+      <div class="flow">
+        <div class="fstep"><div class="fdot">1</div><div class="ftext"><b>觀察與記錄</b><span>哪裡不舒服、多久了、什麼時候會這樣</span></div></div>
+        <div class="fstep"><div class="fdot">2</div><div class="ftext"><b>選對地方</b><span>輕微不適 → 附近診所或衛生所；不確定 → 醫院門診</span></div></div>
+        <div class="fstep"><div class="fdot">3</div><div class="ftext"><b>帶齊東西</b><span>健保卡、身分證、目前在吃的藥（或藥袋）</span></div></div>
+        <div class="fstep"><div class="fdot">4</div><div class="ftext"><b>看診時說清楚</b><span>主動告訴醫師你有在看精神科、正在吃哪些藥</span></div></div>
+        <div class="fstep"><div class="fdot">5</div><div class="ftext"><b>需要陪同嗎？</b><span>可以請家人、工作人員陪你，或請會所協助安排</span></div></div>
+      </div>
+      <p style="margin-top:6px;font-size:14px;color:#7c9296;">不確定該不該看醫生時，可撥健康諮詢專線 <strong>1922</strong> 或 <strong>1925</strong>，會有人協助判斷。</p>
+    </div>
+  </div>
+
+  <!-- ===== 靈 ===== -->
+  <div class="dim-page" id="dim-spirit">
+    <div class="help-intro">
+      除了身體和症狀，<strong>「我為什麼這樣」「我還能不能好起來」</strong>這些感受也很重要。照顧內在的力量，能讓你走得更穩、更久。
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">1</span><h3>對自己溫柔一點</h3></div>
+      <ul>
+        <li class="chk">生病不是你的錯，復元本來就有起有落</li>
+        <li class="chk">今天做不到的，不代表永遠做不到</li>
+        <li class="chk">把目標拆小：今天起床、吃飯、出門走走就很好</li>
+        <li class="chk">允許自己慢慢來，進步不必跟別人比</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">2</span><h3>找回生活的重心</h3></div>
+      <div class="care">
+        <h4><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>可以試試看</h4>
+        <ul>
+          <li>每天安排一件小小、做得到的事</li>
+          <li>保持與人的連結：跟家人、朋友、會所夥伴聊聊</li>
+          <li>動一動身體：散步、伸展、做喜歡的活動</li>
+          <li>記錄三件今天還不錯的小事</li>
+          <li>參加會所或社區活動，找到歸屬與成就感</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-h"><span class="bnum">3</span><h3>你不需要獨自面對</h3></div>
+      <p>有信任的人陪伴，是復元路上最重要的力量之一。當你覺得撐不住、找不到意義時，說出來，讓人陪你一段。</p>
+      <ul>
+        <li class="chk">愛迪樂團隊：陪你設定目標、連結資源</li>
+        <li class="chk">會所與社區據點：固定有人關心、有事可做</li>
+        <li class="chk">支持性團體：和有相似經驗的人互相打氣</li>
+      </ul>
+      <div class="mini-actions">
+        <a class="btn btn-call full" href="tel:1925"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>想找人談談，打 1925</a>
+      </div>
+    </div>
+
+    <div class="danger">
+      <h3><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>當一切都太沉重時</h3>
+      <ul>
+        <li>如果出現不想活下去的念頭，請一定要說出來</li>
+        <li>這不是軟弱，願意求助是很勇敢的事</li>
+      </ul>
+      <div class="act"><a href="tel:1925">立刻撥打 1925，有人會聽你說</a></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:#7c9296;font-size:13.5px;padding:6px 10px 0;">
+    以上為一般自我照顧與求助方向，<strong>不能取代醫師診斷與治療</strong>。<br>身體或精神狀況有疑問，請諮詢你的醫師或專業人員。
+  </div>
+
+</main>
+
+</div><!-- /tab-selfhelp -->
+
+<script>
+  // Filter chips
+  const chips = document.querySelectorAll('.chip');
+  const sections = document.querySelectorAll('.section');
+  const cards = document.querySelectorAll('.card');
+  const searchInput = document.getElementById('search');
+  const noResult = document.getElementById('noResult');
+  let activeFilter = 'all';
+
+  function applyFilters(){
+    const q = searchInput.value.trim().toLowerCase();
+    let anyVisible = false;
+
+    sections.forEach(sec=>{
+      const secCats = (sec.dataset.cat||'').split(' ');
+      const filterMatch = activeFilter==='all' || secCats.includes(activeFilter);
+      let sectionHasCard = false;
+
+      sec.querySelectorAll('.card').forEach(card=>{
+        const cardCats = (card.dataset.cat||'').split(' ');
+        const cardFilterOk = activeFilter==='all' || cardCats.includes(activeFilter);
+        const text = ((card.dataset.keys||'') + ' ' + card.textContent).toLowerCase();
+        const searchOk = q==='' || text.includes(q);
+        const show = filterMatch && cardFilterOk && searchOk;
+        card.classList.toggle('hidden', !show);
+        if(show){ sectionHasCard = true; anyVisible = true; }
+      });
+
+      sec.classList.toggle('hidden', !sectionHasCard);
+    });
+
+    noResult.classList.toggle('show', !anyVisible);
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      chips.forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      activeFilter = chip.dataset.f;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+
+  // Top tab switching
+  document.querySelectorAll('.tabbtn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tabbtn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+      window.scrollTo(0,0);
+    });
+  });
+
+  // Dimension (身/心/靈) switching
+  document.querySelectorAll('.dim-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.dim-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.dim-page').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('dim-'+btn.dataset.dim).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
