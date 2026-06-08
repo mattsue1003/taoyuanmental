@@ -193,11 +193,12 @@
   }
 
   /* ===== Top tab switcher ===== */
+  .tabbar-wrap{position:sticky;top:0;z-index:50;background:rgba(244,248,248,.95);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   .tabbar{
-    position:sticky;top:0;z-index:50;background:rgba(244,248,248,.95);
-    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
     display:flex;max-width:760px;margin:0 auto;padding:8px 12px;gap:7px;
     overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    scroll-behavior:smooth;
   }
   .tabbar::-webkit-scrollbar{display:none;}
   .tabbtn{
@@ -208,6 +209,17 @@
   }
   .tabbtn svg{width:17px;height:17px;fill:currentColor;flex:0 0 auto;}
   .tabbtn.active{background:var(--teal);border-color:var(--teal);color:#fff;}
+  /* scroll hint arrows + fade */
+  .tab-arrow{position:absolute;top:0;bottom:0;width:40px;display:flex;align-items:center;
+    justify-content:center;border:none;cursor:pointer;z-index:3;transition:opacity .2s;padding:0;}
+  .tab-arrow svg{width:20px;height:20px;fill:var(--teal-d);}
+  .tab-arrow.left{left:0;background:linear-gradient(90deg,rgba(244,248,248,.98) 55%,rgba(244,248,248,0));justify-content:flex-start;padding-left:4px;}
+  .tab-arrow.right{right:0;background:linear-gradient(270deg,rgba(244,248,248,.98) 55%,rgba(244,248,248,0));justify-content:flex-end;padding-right:4px;}
+  .tab-arrow.hide{opacity:0;pointer-events:none;}
+  .tab-arrow .pulse{animation:nudge 1.2s ease-in-out infinite;}
+  @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(3px);}}
+  .tab-arrow.left .pulse{animation:nudgeL 1.2s ease-in-out infinite;}
+  @keyframes nudgeL{0%,100%{transform:translateX(0);}50%{transform:translateX(-3px);}}
   .tab-page{display:none;}
   .tab-page.active{display:block;}
 
@@ -320,7 +332,9 @@
 </head>
 <body>
 
-<nav class="tabbar">
+<div class="tabbar-wrap">
+<button class="tab-arrow left hide" id="tabArrowL" aria-label="向左"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+<nav class="tabbar" id="tabbar">
   <button class="tabbtn active" data-tab="resources">
     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
     資源
@@ -342,6 +356,8 @@
     自立生活
   </button>
 </nav>
+<button class="tab-arrow right" id="tabArrowR" aria-label="向右滑動"><svg class="pulse" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+</div>
 
 <div class="tab-page active" id="tab-resources">
 
@@ -544,6 +560,32 @@
       <div class="card-meta"><span class="label">線上</span>台灣就業通</div>
       <div class="actions">
         <a class="btn btn-map full" target="_blank" href="https://www.taiwanjobs.gov.tw/"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>前往台灣就業通</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 交通訓練計畫 -->
+  <section class="section" data-cat="job">
+    <div class="sec-head">
+      <div class="sec-icon ic-orange"><svg viewBox="0 0 24 24"><path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 001 1h1a1 1 0 001-1v-1h8v1a1 1 0 001 1h1a1 1 0 001-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm9 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm1.5-6H6V6h12v5z"/></svg></div>
+      <div><div class="sec-title">交通訓練計畫</div><div class="sec-sub">學會自己出門，增加就醫、就業與生活的方便</div></div>
+    </div>
+
+    <div class="card" data-cat="job" data-keys="交通訓練 公車 機車 google maps 心衛中心 創新方案 出門 搭車">
+      <div class="card-top"><div class="card-name">精神病人交通訓練計畫</div><span class="card-tag tag-orange">創新方案</span></div>
+      <div class="card-help">桃園市社區心理衛生中心創新方案，協助你提升交通自主、減少依賴家人接送。</div>
+      <div class="card-meta" style="margin-top:8px;"><span class="label">訓練內容</span>Google Maps 教學、公車 APP 使用、實際搭乘訓練、交通安全知識、機車駕訓課程</div>
+      <div class="card-meta" style="margin-top:6px;"><span class="label">適合對象</span>有交通需求、想獨立外出、具學習動機且狀況穩定的精神病人</div>
+      <div class="card-meta" style="margin-top:6px;"><span class="label">怎麼申請</span>下載「社區心理衛生中心專業服務申請表」→ 填寫後 Email → 中心督導評估</div>
+    </div>
+
+    <div class="card" data-cat="job" data-keys="交通訓練 申請 窗口 林職能治療師 心衛中心">
+      <div class="card-top"><div class="card-name">交通訓練計畫 申請窗口</div><span class="card-tag tag-orange">窗口</span></div>
+      <div class="card-help">桃園市社區心理衛生中心｜林職能治療師。可電話洽詢申請方式與服務內容。</div>
+      <div class="card-meta"><span class="label">電話</span>03-3134995 分機 113　<span class="label">Email</span>tycgmental1995@gmail.com</div>
+      <div class="actions">
+        <a class="btn btn-call" href="tel:0331349950113"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+        <a class="btn btn-map" target="_blank" href="https://mental.tycg.gov.tw/"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1114 9.5 4.5 4.5 0 019.5 14z"/></svg>下載申請表</a>
       </div>
     </div>
   </section>
@@ -1247,7 +1289,7 @@
   </div>
 
   <!-- 申請窗口 -->
-  <div class="block-h" style="margin:18px 0 11px;"><span class="bnum" style="background:var(--teal);">＠</span><h3>怎麼申請？找這些窗口</h3></div>
+  <div class="block-h" style="margin:18px 0 11px;"><span class="bnum" style="background:var(--teal);">＠</span><h3>自立生活支持服務 申請窗口</h3></div>
 
   <div class="card">
     <div class="card-top"><div class="card-name">桃園市社會局 身心障礙福利科</div><span class="card-tag tag-teal">主政窗口</span></div>
@@ -1347,9 +1389,28 @@
       document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+      btn.scrollIntoView({inline:'center',block:'nearest'});
       window.scrollTo(0,0);
     });
   });
+
+  // Tab bar scroll-hint arrows
+  const tabbar=document.getElementById('tabbar');
+  const arrL=document.getElementById('tabArrowL');
+  const arrR=document.getElementById('tabArrowR');
+  function updateArrows(){
+    if(!tabbar) return;
+    const max=tabbar.scrollWidth-tabbar.clientWidth;
+    arrL.classList.toggle('hide', tabbar.scrollLeft<=4);
+    arrR.classList.toggle('hide', tabbar.scrollLeft>=max-4 || max<=0);
+  }
+  if(tabbar){
+    tabbar.addEventListener('scroll',updateArrows);
+    window.addEventListener('resize',updateArrows);
+    arrL.addEventListener('click',()=>{tabbar.scrollBy({left:-160,behavior:'smooth'});});
+    arrR.addEventListener('click',()=>{tabbar.scrollBy({left:160,behavior:'smooth'});});
+    setTimeout(updateArrows,100);
+  }
 
   // Dimension (身/心/靈) switching
   document.querySelectorAll('.dim-btn').forEach(btn=>{
