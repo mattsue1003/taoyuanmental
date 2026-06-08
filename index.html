@@ -62,6 +62,22 @@
   }
   .intro-box strong{color:var(--teal-d);}
 
+  .spirit-box{
+    max-width:760px;margin:14px auto 0;padding:0 16px;
+  }
+  .spirit-inner{
+    background:linear-gradient(135deg,var(--teal-d),#1d5f4a);color:#fff;
+    border-radius:16px;padding:18px 19px;box-shadow:var(--shadow);
+  }
+  .spirit-inner .stag{display:inline-block;background:var(--amber);color:var(--ink);
+    font-size:12.5px;font-weight:800;padding:4px 13px;border-radius:14px;margin-bottom:10px;}
+  .spirit-inner h3{font-size:18px;font-weight:800;margin-bottom:7px;}
+  .spirit-inner p{font-size:14.5px;opacity:.92;line-height:1.7;margin-bottom:4px;}
+  .spirit-inner .more{display:inline-flex;align-items:center;gap:5px;margin-top:11px;
+    background:rgba(255,255,255,.95);color:var(--teal-d);text-decoration:none;
+    font-weight:800;font-size:14.5px;padding:9px 16px;border-radius:11px;cursor:pointer;}
+  .spirit-inner .more svg{width:15px;height:15px;fill:var(--teal-d);}
+
   /* ===== Search ===== */
   .search-wrap{max-width:760px;margin:18px auto 0;padding:0 16px;}
   .search-box{position:relative;}
@@ -321,6 +337,10 @@
     <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1H6.32c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
     金錢管理
   </button>
+  <button class="tabbtn" data-tab="rights">
+    <svg viewBox="0 0 24 24"><path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37C11.07 8.33 14.05 10 17.42 10c.78 0 1.53-.09 2.25-.26.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"/></svg>
+    自立生活
+  </button>
 </nav>
 
 <div class="tab-page active" id="tab-resources">
@@ -335,6 +355,16 @@
 <div class="intro">
   <div class="intro-box">
     這裡整理了南桃園地區可以<strong>幫助你的單位</strong>。不論你需要日間活動、找地方住、想找工作、需要諮詢或情緒支持，都能在這裡找到方向。<strong>點電話可直接撥號，點地圖可導航前往。</strong>
+  </div>
+</div>
+
+<div class="spirit-box">
+  <div class="spirit-inner">
+    <span class="stag">自立生活的精神</span>
+    <h3>你的生活，由你做主</h3>
+    <p>自立生活支持服務的核心是「<strong>賦權</strong>」——相信每個人都有<strong>自主決定自己生活的權利</strong>。服務不是替你決定，而是支持你做自己的選擇。</p>
+    <p>其中有兩個重要的夥伴：<strong>個人助理</strong>提供生活與社會參與的人力協助；<strong>同儕支持員</strong>是和你有相似經驗的過來人，陪你一起擬定生活計畫。</p>
+    <span class="more" data-goto="rights">了解兩大夥伴與申請方式 <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></span>
   </div>
 </div>
 
@@ -1124,6 +1154,118 @@
 
 </div><!-- /tab-money -->
 
+<!-- ============ RIGHTS / 自立生活 TAB ============ -->
+<div class="tab-page" id="tab-rights">
+
+<header class="help-header" style="background:linear-gradient(150deg,#1d5f4a 0%,var(--teal-d) 100%);">
+  <span class="badge" style="background:var(--amber);color:var(--ink);">自立生活</span>
+  <h1>你的生活，由你做主</h1>
+  <p>自立生活的核心是「賦權」——你有權利自主決定自己的生活。服務的角色，是支持你做選擇，不是替你決定。</p>
+</header>
+
+<main>
+
+  <div class="help-intro" style="border-left-color:var(--amber);">
+    「自立」不是「凡事自己來」，而是<strong>由你做主、決定怎麼過生活</strong>，再由專業夥伴從旁支持你完成。你想住哪、想做什麼、需要哪些協助，都<strong>以你為主體</strong>。
+  </div>
+
+  <!-- 賦權精神 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">★</span><h3>什麼是「賦權」與自主決定？</h3></div>
+    <ul>
+      <li class="chk">你是自己生活的主人，<strong>有權利自己做決定</strong></li>
+      <li class="chk">服務「<strong>以你為主體</strong>」，依你的意願與需求量身規劃</li>
+      <li class="chk">支持你「<strong>選擇</strong>」與「<strong>嘗試</strong>」，而不是幫你決定好</li>
+      <li class="chk">就算需要協助，主導權還是在你手上</li>
+    </ul>
+  </div>
+
+  <!-- 兩大靈魂人物 -->
+  <div class="block-h" style="margin:4px 0 11px;"><span class="bnum" style="background:var(--amber);color:var(--ink);">♥</span><h3>兩個重要的夥伴</h3></div>
+
+  <div class="card">
+    <div class="card-top"><div class="card-name">個人助理（PA）</div><span class="card-tag tag-teal">人力協助</span></div>
+    <div class="card-help">在你需要時，提供生活與社會參與的<strong>人力協助</strong>——例如外出、處理日常事務、參與社區活動。重點是「協助你完成你想做的事」，由你決定怎麼用。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><div class="card-name">同儕支持員</div><span class="card-tag tag-orange">過來人陪伴</span></div>
+    <div class="card-help">是和你有<strong>相似經驗的過來人</strong>。他懂你的處境，會陪你一起擬定自立生活計畫、給你經驗與打氣，讓你知道「你不孤單，這條路走得通」。</div>
+  </div>
+
+  <!-- 適合對象 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">1</span><h3>誰可以申請？</h3></div>
+    <p>桃園市「身心障礙者自立生活支持服務」的對象：</p>
+    <ul>
+      <li>實際居住桃園市、<strong>年滿 18 歲</strong></li>
+      <li>領有<strong>身心障礙證明（手冊）</strong></li>
+      <li>經需求評估，<strong>有自立生活的意願與需求</strong></li>
+    </ul>
+  </div>
+
+  <!-- 服務內容 -->
+  <div class="block">
+    <div class="block-h"><span class="bnum">2</span><h3>這個服務能幫你什麼？</h3></div>
+    <ul>
+      <li>自立生活能力增進與支持（含財務、時間管理、交通與輔具資訊）</li>
+      <li>合適住所協助（租屋、無障礙環境改善）</li>
+      <li>社會參與及人際關係協助</li>
+      <li>健康支持（保健諮詢、陪同就醫）</li>
+      <li>同儕支持</li>
+      <li>社會資源連結（就業、就學、經濟協助、專業服務）</li>
+    </ul>
+  </div>
+
+  <!-- 申請窗口 -->
+  <div class="block-h" style="margin:18px 0 11px;"><span class="bnum" style="background:var(--teal);">＠</span><h3>怎麼申請？找這些窗口</h3></div>
+
+  <div class="card">
+    <div class="card-top"><div class="card-name">桃園市社會局 身心障礙福利科</div><span class="card-tag tag-teal">主政窗口</span></div>
+    <div class="card-help">自立生活支持服務的市府主政窗口，可詢問申請資格、流程與承辦單位。</div>
+    <div class="card-meta"><span class="label">電話</span>03-3322101 分機 6305</div>
+    <div class="actions">
+      <a class="btn btn-call full" href="tel:0333221016305"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><div class="card-name">承辦單位：桃園市自閉症協進會</div><span class="card-tag tag-orange">承辦單位</span></div>
+    <div class="card-help">受託辦理自立生活支持服務，協助需求評估、媒合個人助理與同儕支持。</div>
+    <div class="card-meta"><span class="label">電話</span>03-2170919 ／ 03-3388819</div>
+    <div class="actions">
+      <a class="btn btn-call full" href="tel:032170919"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-top"><div class="card-name">需求評估中心</div><span class="card-tag tag-teal">評估</span></div>
+    <div class="card-help">申請後由需求評估中心評估自立生活意願與需求，作為服務規劃依據。</div>
+    <div class="card-meta"><span class="label">電話</span>03-3680711</div>
+    <div class="actions">
+      <a class="btn btn-call full" href="tel:033680711"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>撥打電話</a>
+    </div>
+  </div>
+
+  <div class="tip">💡 個人助理服務費依規定計算，<b>低收／中低收入戶可由政府補助</b>，並有每月時數上限。實際費用與補助以桃園市社會局公告為準，申請時可一併詢問。</div>
+
+  <!-- 求助卡片 -->
+  <div class="block" style="background:var(--ink);color:#fff;margin-top:6px;">
+    <div class="block-h"><span class="bnum" style="background:var(--amber);color:var(--ink);">♥</span><h3 style="color:#fff;">想了解或申請，我們協助你轉介</h3></div>
+    <p style="color:rgba(255,255,255,.85);">不確定自己適不適合、怎麼開始申請，可以先跟愛迪樂團隊或會所工作人員說，我們會協助你接上自立生活支持服務。</p>
+    <div class="mini-actions">
+      <a class="btn full" style="background:var(--orange);color:#fff;" href="tel:1925"><svg viewBox="0 0 24 24" style="fill:#fff;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>諮詢專線 1925</a>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:#7c9296;font-size:13.5px;padding:14px 10px 0;">
+    服務對象、內容、費用與承辦單位可能調整，<strong>實際以桃園市政府社會局公告為準</strong>。
+  </div>
+
+</main>
+
+</div><!-- /tab-rights -->
+
 <script>
   // Filter chips
   const chips = document.querySelectorAll('.chip');
@@ -1187,6 +1329,15 @@
       document.querySelectorAll('.dim-page').forEach(p=>p.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('dim-'+btn.dataset.dim).classList.add('active');
+    });
+  });
+
+  // Jump-to-tab links (e.g. spirit box "了解更多")
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const t=el.dataset.goto;
+      const btn=document.querySelector('.tabbtn[data-tab="'+t+'"]');
+      if(btn) btn.click();
     });
   });
 </script>
